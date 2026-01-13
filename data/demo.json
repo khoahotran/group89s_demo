@@ -1,0 +1,702 @@
+{
+    "modules": [
+        {
+            "id": "core",
+            "name": "Core System",
+            "maturity": "High",
+            "description": "Foundation for organization, users, and master data management.",
+            "features": [
+                "Tạo tổ chức mới",
+                "Chọn ngành",
+                "Khoang",
+                "Email/Fax/SĐT",
+                "Lịch làm việc",
+                "Lịch nghỉ lễ (theo templates)"
+            ]
+        },
+        {
+            "id": "user-access",
+            "name": "Hệ thống người dùng",
+            "maturity": "High",
+            "description": "User and access control management.",
+            "features": [
+                "Phân quyền theo chức năng",
+                "Phân quyền theo dữ liệu",
+                "Line Manager",
+                "Cấu trúc tổ chức",
+                "Phòng ban",
+                "Chức vụ"
+            ]
+        },
+        {
+            "id": "partner",
+            "name": "Đối tác",
+            "maturity": "Medium",
+            "description": "Partner and contact management.",
+            "features": [
+                "Thông tin liên hệ",
+                "Địa chỉ"
+            ]
+        },
+        {
+            "id": "product",
+            "name": "Sản phẩm",
+            "maturity": "Medium",
+            "description": "Product master data management.",
+            "features": [
+                "Nhóm sản phẩm"
+            ]
+        },
+        {
+            "id": "document",
+            "name": "Chứng từ",
+            "maturity": "High",
+            "description": "Document engine and workflow.",
+            "features": [
+                "Thông báo khi có chứng từ mới",
+                "Thông báo khi có chứng từ cần duyệt",
+                "Duyệt chứng từ",
+                "Từ chối",
+                "Hủy",
+                "Xóa",
+                "Sửa",
+                "Nhân bản",
+                "Xuất file excel",
+                "Nhập file excel",
+                "Gửi email",
+                "In chứng từ khác ngôn ngữ"
+            ]
+        },
+        {
+            "id": "approval",
+            "name": "Phê duyệt",
+            "maturity": "High",
+            "description": "Approval workflow system.",
+            "features": [
+                "Duyệt theo cấp",
+                "Duyệt theo điều kiện"
+            ]
+        },
+        {
+            "id": "sales",
+            "name": "Mua hàng",
+            "maturity": "Medium",
+            "description": "Sales and customer management.",
+            "features": [
+                "Thông tin khách hàng",
+                "Nhà cung cấp",
+                "Nhân viên",
+                "Khu vực bán hàng",
+                "Nhóm giá bán",
+                "Giá bán",
+                "Các điều khoản khác"
+            ]
+        },
+        {
+            "id": "purchase",
+            "name": "Mua hàng",
+            "maturity": "Medium",
+            "description": "Procurement and vendor management.",
+            "features": [
+                "Phiếu yêu cầu",
+                "Phiếu mua hàng",
+                "Hóa đơn mua hàng",
+                "Thanh toán nhà cung cấp"
+            ]
+        },
+        {
+            "id": "warehouse",
+            "name": "Kho hàng",
+            "maturity": "Low",
+            "description": "Warehouse and inventory management.",
+            "features": [
+                "Dashboard",
+                "Phiếu nhập kho",
+                "Phiếu xuất kho",
+                "Hàng tồn",
+                "Hàng đặt",
+                "Chuyển kho",
+                "Kiểm kho",
+                "Hủy hàng tồn kho"
+            ]
+        },
+        {
+            "id": "hr",
+            "name": "Nhân sự",
+            "maturity": "Low",
+            "description": "HR and recruitment management.",
+            "features": [
+                "Tạo công việc tuyển dụng",
+                "Danh sách ứng viên",
+                "Quản lý phỏng vấn",
+                "Gửi offer",
+                "Nhận offer",
+                "Tạo hồ sơ nhân viên",
+                "Quản lý hợp đồng"
+            ]
+        },
+        {
+            "id": "payroll",
+            "name": "Lương",
+            "maturity": "Low",
+            "description": "Payroll processing system.",
+            "features": [
+                "Tạo bảng lương",
+                "Tính lương",
+                "Phụ cấp",
+                "Khấu trừ",
+                "..."
+            ]
+        },
+        {
+            "id": "accounting",
+            "name": "Kế toán",
+            "maturity": "Medium",
+            "description": "Accounting and financial management.",
+            "features": [
+                "Khai báo tài khoản",
+                "Khai báo chi phí",
+                "Khai báo thuế",
+                "Khai báo khách hàng",
+                "Khai báo nhà cung cấp",
+                "Phiếu thu",
+                "Phiếu chi",
+                "Bút toán kế toán",
+                "Báo cáo tài chính"
+            ]
+        },
+        {
+            "id": "expense",
+            "name": "Chi phí",
+            "maturity": "Low",
+            "description": "Expense management and reimbursement.",
+            "features": [
+                "Tạo chi phí",
+                "Duyệt chi phí",
+                "Thanh toán"
+            ]
+        },
+        {
+            "id": "email",
+            "name": "Email Marketing",
+            "maturity": "Low",
+            "description": "Email campaign management.",
+            "features": [
+                "Phân loại",
+                "Nhập email",
+                "Gửi email",
+                "Theo dõi"
+            ]
+        },
+        {
+            "id": "templates",
+            "name": "Biểu mẫu",
+            "maturity": "Low",
+            "description": "Document template management.",
+            "features": [
+                "Khai báo biểu mẫu",
+                "Sửa biểu mẫu",
+                "Xóa biểu mẫu",
+                "Lưu trữ biểu mẫu"
+            ]
+        },
+        {
+            "id": "admin",
+            "name": "Bản Quyền",
+            "maturity": "High",
+            "description": "System administration and settings.",
+            "features": [
+                "Mua bản quyền",
+                "Gia hạn bản quyền",
+                "Nâng cấp bản quyền"
+            ]
+        },
+        {
+            "id": "integration",
+            "name": "Kết Nối",
+            "maturity": "Medium",
+            "description": "Third-party integrations.",
+            "features": [
+                "Sàn TMĐT",
+                "Chuyển phát nhanh",
+                "Thanh toán",
+                "Vận chuyển",
+                "Ngân hàng",
+                "Kho vận",
+                "..."
+            ]
+        },
+        {
+            "id": "reporting",
+            "name": "Thuyết minh Báo cáo",
+            "maturity": "Medium",
+            "description": "Reporting and analytics.",
+            "features": [
+                "Chính sách",
+                "Quy trình",
+                "Hướng dẫn",
+                "Tài liệu",
+                "..."
+            ]
+        }
+    ],
+    "flows": [
+        {
+            "id": "sales_invoice",
+            "name": "Sales Quote → Invoice",
+            "steps": [
+                {
+                    "step": "quotation:create",
+                    "label": "Create Quotation",
+                    "modules": [
+                        "sales"
+                    ]
+                },
+                {
+                    "step": "quotation:approve",
+                    "label": "Approve Quotation",
+                    "modules": [
+                        "sales"
+                    ]
+                },
+                {
+                    "step": "order:create",
+                    "label": "Convert to Sales Order",
+                    "modules": [
+                        "sales"
+                    ]
+                },
+                {
+                    "step": "delivery:create",
+                    "label": "Create Delivery",
+                    "modules": [
+                        "sales",
+                        "warehouse"
+                    ]
+                },
+                {
+                    "step": "invoice:create",
+                    "label": "Create Invoice",
+                    "modules": [
+                        "sales",
+                        "accounting"
+                    ]
+                },
+                {
+                    "step": "payment:received",
+                    "label": "Mark Payment Received",
+                    "modules": [
+                        "accounting"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "purchase_payment",
+            "name": "Purchase Request → GRN → Payment",
+            "steps": [
+                {
+                    "step": "pr:create",
+                    "label": "Create Purchase Request",
+                    "modules": [
+                        "purchase"
+                    ]
+                },
+                {
+                    "step": "pr:approve",
+                    "label": "Approve PR",
+                    "modules": [
+                        "purchase"
+                    ]
+                },
+                {
+                    "step": "po:create",
+                    "label": "Create PO",
+                    "modules": [
+                        "purchase"
+                    ]
+                },
+                {
+                    "step": "goods:receive",
+                    "label": "Receive Goods (GRN)",
+                    "modules": [
+                        "warehouse",
+                        "purchase"
+                    ]
+                },
+                {
+                    "step": "invoice:create",
+                    "label": "Create Purchase Invoice",
+                    "modules": [
+                        "purchase",
+                        "accounting"
+                    ]
+                },
+                {
+                    "step": "supplier:pay",
+                    "label": "Pay Supplier",
+                    "modules": [
+                        "accounting"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "recruitment_onboard",
+            "name": "Recruitment → Onboard",
+            "steps": [
+                {
+                    "step": "job:create",
+                    "label": "Create Job",
+                    "modules": [
+                        "hr"
+                    ]
+                },
+                {
+                    "step": "candidate:apply",
+                    "label": "Candidate Applies",
+                    "modules": [
+                        "hr"
+                    ]
+                },
+                {
+                    "step": "interview",
+                    "label": "Interview Rounds",
+                    "modules": [
+                        "hr"
+                    ]
+                },
+                {
+                    "step": "offer:send",
+                    "label": "Send Offer",
+                    "modules": [
+                        "hr"
+                    ]
+                },
+                {
+                    "step": "offer:accept",
+                    "label": "Candidate Accepts",
+                    "modules": [
+                        "hr"
+                    ]
+                },
+                {
+                    "step": "profile:create",
+                    "label": "Create Employee Profile",
+                    "modules": [
+                        "hr",
+                        "core"
+                    ]
+                },
+                {
+                    "step": "manager:assign",
+                    "label": "Assign Line Manager",
+                    "modules": [
+                        "hr",
+                        "core"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "expense_pay",
+            "name": "Expense → Approve → Pay",
+            "steps": [
+                {
+                    "step": "expense:submit",
+                    "label": "Submit Expense",
+                    "modules": [
+                        "expense"
+                    ]
+                },
+                {
+                    "step": "expense:approve",
+                    "label": "Manager Approval",
+                    "modules": [
+                        "expense"
+                    ]
+                },
+                {
+                    "step": "accounting:validate",
+                    "label": "Accounting Validation",
+                    "modules": [
+                        "accounting",
+                        "expense"
+                    ]
+                },
+                {
+                    "step": "payment:paid",
+                    "label": "Mark Paid",
+                    "modules": [
+                        "accounting"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "payroll_run",
+            "name": "Payroll Run",
+            "steps": [
+                {
+                    "step": "period:start",
+                    "label": "Start Payroll Period",
+                    "modules": [
+                        "payroll"
+                    ]
+                },
+                {
+                    "step": "select:employees",
+                    "label": "Select Employees",
+                    "modules": [
+                        "payroll",
+                        "hr"
+                    ]
+                },
+                {
+                    "step": "apply:adjustments",
+                    "label": "Apply Allowances/Deductions",
+                    "modules": [
+                        "payroll"
+                    ]
+                },
+                {
+                    "step": "generate:payslips",
+                    "label": "Generate Payslips",
+                    "modules": [
+                        "payroll"
+                    ]
+                },
+                {
+                    "step": "export:payment",
+                    "label": "Export Payment File",
+                    "modules": [
+                        "payroll",
+                        "accounting"
+                    ]
+                },
+                {
+                    "step": "accounting:post",
+                    "label": "Post-reference to Accounting",
+                    "modules": [
+                        "accounting"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "warehouse_transfer",
+            "name": "Warehouse Transfer & Stock Adjustment",
+            "steps": [
+                {
+                    "step": "stock:check",
+                    "label": "Check Stock Levels",
+                    "modules": [
+                        "warehouse"
+                    ]
+                },
+                {
+                    "step": "transfer:create",
+                    "label": "Create Transfer Request",
+                    "modules": [
+                        "warehouse"
+                    ]
+                },
+                {
+                    "step": "transfer:approve",
+                    "label": "Approve Transfer",
+                    "modules": [
+                        "warehouse",
+                        "approval"
+                    ]
+                },
+                {
+                    "step": "goods:move",
+                    "label": "Move Goods",
+                    "modules": [
+                        "warehouse"
+                    ]
+                },
+                {
+                    "step": "stock:update",
+                    "label": "Update Stock Records",
+                    "modules": [
+                        "warehouse",
+                        "accounting"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "email_campaign",
+            "name": "Email Marketing Campaign",
+            "steps": [
+                {
+                    "step": "list:import",
+                    "label": "Import Contact List",
+                    "modules": [
+                        "email"
+                    ]
+                },
+                {
+                    "step": "template:select",
+                    "label": "Select Email Template",
+                    "modules": [
+                        "email",
+                        "templates"
+                    ]
+                },
+                {
+                    "step": "campaign:create",
+                    "label": "Create Campaign",
+                    "modules": [
+                        "email"
+                    ]
+                },
+                {
+                    "step": "email:send",
+                    "label": "Send Emails",
+                    "modules": [
+                        "email"
+                    ]
+                },
+                {
+                    "step": "campaign:track",
+                    "label": "Track Results",
+                    "modules": [
+                        "email",
+                        "reporting"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "document_approval",
+            "name": "Document Approval Workflow",
+            "steps": [
+                {
+                    "step": "doc:create",
+                    "label": "Create Document",
+                    "modules": [
+                        "document"
+                    ]
+                },
+                {
+                    "step": "doc:submit",
+                    "label": "Submit for Approval",
+                    "modules": [
+                        "document",
+                        "approval"
+                    ]
+                },
+                {
+                    "step": "manager:review",
+                    "label": "Manager Review",
+                    "modules": [
+                        "approval"
+                    ]
+                },
+                {
+                    "step": "doc:approve",
+                    "label": "Approve Document",
+                    "modules": [
+                        "approval"
+                    ]
+                },
+                {
+                    "step": "doc:notify",
+                    "label": "Notify Stakeholders",
+                    "modules": [
+                        "document",
+                        "email"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "partner_onboard",
+            "name": "Partner Onboarding",
+            "steps": [
+                {
+                    "step": "partner:register",
+                    "label": "Partner Registration",
+                    "modules": [
+                        "partner"
+                    ]
+                },
+                {
+                    "step": "info:verify",
+                    "label": "Verify Information",
+                    "modules": [
+                        "partner",
+                        "user-access"
+                    ]
+                },
+                {
+                    "step": "contract:create",
+                    "label": "Create Contract",
+                    "modules": [
+                        "partner",
+                        "document"
+                    ]
+                },
+                {
+                    "step": "account:setup",
+                    "label": "Setup Account",
+                    "modules": [
+                        "user-access",
+                        "accounting"
+                    ]
+                },
+                {
+                    "step": "partner:activate",
+                    "label": "Activate Partner",
+                    "modules": [
+                        "partner"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "inventory_check",
+            "name": "Inventory Check & Reconciliation",
+            "steps": [
+                {
+                    "step": "check:schedule",
+                    "label": "Schedule Inventory Check",
+                    "modules": [
+                        "warehouse"
+                    ]
+                },
+                {
+                    "step": "physical:count",
+                    "label": "Physical Count",
+                    "modules": [
+                        "warehouse"
+                    ]
+                },
+                {
+                    "step": "variance:identify",
+                    "label": "Identify Variances",
+                    "modules": [
+                        "warehouse"
+                    ]
+                },
+                {
+                    "step": "adjustment:create",
+                    "label": "Create Adjustment",
+                    "modules": [
+                        "warehouse"
+                    ]
+                },
+                {
+                    "step": "accounting:update",
+                    "label": "Update Accounting",
+                    "modules": [
+                        "warehouse",
+                        "accounting"
+                    ]
+                }
+            ]
+        }
+    ]
+}
