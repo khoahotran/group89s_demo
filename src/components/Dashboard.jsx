@@ -2,13 +2,19 @@ import { useState, useRef, useCallback } from 'react';
 import { ModuleCard } from './ModuleCard';
 import { FlowMap } from './FlowMap';
 import { FlowPlayer } from './FlowPlayer';
-import { Charts } from './Charts';
+import { FlowChart } from './FlowChart';
 import { Download, FileText, Printer } from 'lucide-react';
 import { toPng } from 'html-to-image';
 import { saveAs } from 'file-saver';
 
 export default function Dashboard({ data }) {
-    const [activeFlowState, setActiveFlowState] = useState({ modules: [], label: '', snippet: null });
+    const [activeFlowState, setActiveFlowState] = useState({
+        modules: [],
+        label: '',
+        snippet: null,
+        selectedFlow: null,
+        currentStepIndex: -1
+    });
     const mapRef = useRef(null);
 
     const handleExportPng = useCallback(() => {
@@ -30,7 +36,7 @@ export default function Dashboard({ data }) {
         let csv = "Module,Maturity,Feature,Description\n";
         data.modules.forEach(m => {
             m.features.forEach(f => {
-                csv += `"${m.name}","${m.maturity}","${f}","${m.description}"\n`;
+                csv += `"${m.name}", "${m.maturity}", "${f}", "${m.description}"\n`;
             });
         });
         const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
@@ -72,39 +78,49 @@ export default function Dashboard({ data }) {
                 </div>
             </section>
 
+
             {/* Interactive Flow Section */}
-            <section className="space-y-6 break-before-all print:break-before-page">
-                <h2 className="text-2xl font-semibold border-l-4 border-primary pl-4">Navigation & Demo Flows</h2>
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    {/* Diagram */}
-                    <div className="lg:col-span-2 border rounded-xl bg-card shadow-sm p-6 flex flex-col min-h-[500px]" ref={mapRef}>
-                        <div className="mb-4 flex justify-between items-center">
-                            <h3 className="font-semibold text-lg">System Map</h3>
+            <section className="space-y-8 break-before-all print:break-before-page">
+                <h2 className="text-3xl font-bold border-l-4 border-[#005461] pl-5">Workflow Simulation</h2>
+                <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+                    {/* System Map - 3/4 width */}
+                    <div className="lg:col-span-3 border-2 border-[#00B7B5] rounded-xl bg-card shadow-lg p-8 flex flex-col" ref={mapRef}>
+                        <div className="mb-6 flex justify-between items-center">
+                            <h3 className="font-bold text-2xl text-[#005461]">System Map</h3>
                             {activeFlowState.label && (
-                                <span className="px-3 py-1 bg-primary text-primary-foreground rounded-full text-xs font-mono animate-pulse">
+                                <span className="px-4 py-2 bg-[#005461] text-white rounded-full text-sm font-mono animate-pulse">
                                     Active Step: {activeFlowState.label}
                                 </span>
                             )}
                         </div>
-                        <div className="flex-1 bg-gray-50/50 rounded-lg border overflow-hidden relative min-h-[400px]">
-                            <FlowMap
-                                activeStepModules={activeFlowState.modules}
-                                highlightedModules={activeFlowState.modules}
-                            />
+
+                        {/* FlowMap and FlowChart in one row */}
+                        <div className="flex flex-col lg:flex-row gap-6">
+                            {/* FlowMap - Left side (2/3) */}
+                            <div className="flex-[2] bg-gray-50/50 rounded-lg border-2 border-[#00B7B5] overflow-hidden relative min-h-[500px]">
+                                <FlowMap
+                                    activeStepModules={activeFlowState.modules}
+                                    highlightedModules={activeFlowState.modules}
+                                />
+                            </div>
+
+                            {/* Flow Chart - Right side (1/3) */}
+                            {activeFlowState.selectedFlow && (
+                                <div className="flex-1">
+                                    <FlowChart
+                                        flow={activeFlowState.selectedFlow}
+                                        currentStepIndex={activeFlowState.currentStepIndex}
+                                    />
+                                </div>
+                            )}
                         </div>
                     </div>
 
-                    {/* Controls */}
-                    <div className="h-full min-h-[500px]">
+                    {/* Flow Player - 1/3 width */}
+                    <div className="lg:col-span-1 w-full">
                         <FlowPlayer flows={data.flows} onStateChange={setActiveFlowState} />
                     </div>
                 </div>
-            </section>
-
-            {/* Analytics */}
-            <section className="space-y-6 pb-12 break-inside-avoid">
-                <h2 className="text-2xl font-semibold border-l-4 border-primary pl-4">System Analytics</h2>
-                <Charts data={data} />
             </section>
 
             {/* Footer */}

@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Play, SkipForward, RotateCcw } from 'lucide-react';
 import { cn } from '../lib/utils';
-import { FlowChart } from './FlowChart';
 
 export function FlowPlayer({ flows, onStateChange }) {
     const [selectedFlowId, setSelectedFlowId] = useState(flows[0].id);
@@ -32,10 +31,18 @@ export function FlowPlayer({ flows, onStateChange }) {
             onStateChange({
                 modules: step.modules,
                 label: step.label,
-                snippet: getSampleData(step.step)
+                snippet: getSampleData(step.step),
+                selectedFlow: selectedFlow,
+                currentStepIndex: currentStepIndex
             });
         } else {
-            onStateChange({ modules: [], label: '', snippet: null });
+            onStateChange({
+                modules: [],
+                label: '',
+                snippet: null,
+                selectedFlow: selectedFlow,
+                currentStepIndex: -1
+            });
         }
     }, [currentStepIndex, selectedFlow]); // Removed onStateChange from dependency to avoid loop if parent function isn't stable
 
@@ -46,11 +53,11 @@ export function FlowPlayer({ flows, onStateChange }) {
     };
 
     return (
-        <div className="flex flex-col h-full bg-card border rounded-lg overflow-hidden shadow-sm">
-            <div className="p-4 border-b bg-muted/40">
-                <h3 className="font-semibold mb-2">Simulation Control</h3>
+        <div className="flex flex-col bg-card border-2 border-[#00B7B5] rounded-xl overflow-hidden shadow-lg">
+            <div className="p-6 border-b-2 border-[#00B7B5] bg-[#F4F4F4]">
+                <h3 className="font-bold mb-3 text-xl text-[#005461]">Workflow Simulation</h3>
                 <select
-                    className="w-full p-2 border rounded bg-background text-sm"
+                    className="w-full p-3 border-2 border-[#00B7B5] rounded-lg bg-background text-base font-medium"
                     value={selectedFlowId}
                     onChange={(e) => handleFlowSelect(e.target.value)}
                 >
@@ -58,11 +65,6 @@ export function FlowPlayer({ flows, onStateChange }) {
                         <option key={f.id} value={f.id}>{f.name}</option>
                     ))}
                 </select>
-            </div>
-
-            {/* Flow Chart Visualization */}
-            <div className="px-4 pt-4">
-                <FlowChart flow={selectedFlow} currentStepIndex={currentStepIndex} />
             </div>
 
             <div className="flex-1 overflow-y-auto p-4 space-y-3 min-h-[300px]">

@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { ReactFlow, Controls, Background, useNodesState, useEdgesState, MarkerType } from '@xyflow/react';
+import { ReactFlow, Controls, Background, useNodesState, useEdgesState, MarkerType, Position } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 
 export function FlowChart({ flow, currentStepIndex = -1 }) {
@@ -9,29 +9,31 @@ export function FlowChart({ flow, currentStepIndex = -1 }) {
     useEffect(() => {
         if (!flow) return;
 
-        // Create nodes from flow steps
+        // Create nodes from flow steps - VERTICAL layout
         const newNodes = flow.steps.map((step, idx) => ({
             id: `step-${idx}`,
-            position: { x: idx * 220, y: 100 },
+            position: { x: 200, y: idx * 140 }, // Vertical: same x, increasing y
+            sourcePosition: Position.Bottom,   // 👇 arrows go down
+            targetPosition: Position.Top,       // 👆 arrows come from top
             data: {
                 label: (
-                    <div className="text-center px-2">
-                        <div className="font-bold text-sm mb-1">{idx + 1}</div>
-                        <div className="text-xs leading-tight font-medium">{step.label}</div>
+                    <div className="text-center px-3">
+                        <div className="font-bold text-lg mb-2">{idx + 1}</div>
+                        <div className="text-sm leading-tight font-medium">{step.label}</div>
                     </div>
                 )
             },
             type: 'default',
             style: {
-                background: idx === currentStepIndex ? 'hsl(188 100% 19%)' : idx < currentStepIndex ? 'hsl(169 53% 49%)' : '#fff',
+                background: idx === currentStepIndex ? '#005461' : idx < currentStepIndex ? '#018790' : '#fff',
                 color: idx <= currentStepIndex ? '#fff' : '#000',
-                border: idx === currentStepIndex ? '3px solid hsl(175 63% 38%)' : '2px solid hsl(188 20% 90%)',
-                borderRadius: '8px',
-                padding: '16px',
-                width: 180,
-                fontSize: '13px',
+                border: idx === currentStepIndex ? '3px solid #00B7B5' : '2px solid #00B7B5',
+                borderRadius: '10px',
+                padding: '20px',
+                width: 200,
+                fontSize: '14px',
                 fontWeight: idx === currentStepIndex ? 'bold' : 'normal',
-                boxShadow: idx === currentStepIndex ? '0 4px 12px rgba(0, 84, 97, 0.3)' : '0 2px 4px rgba(0,0,0,0.1)',
+                boxShadow: idx === currentStepIndex ? '0 6px 16px rgba(0, 84, 97, 0.4)' : '0 3px 6px rgba(0,0,0,0.1)',
                 transition: 'all 0.3s ease',
             },
         }));
@@ -41,14 +43,15 @@ export function FlowChart({ flow, currentStepIndex = -1 }) {
             id: `edge-${idx}`,
             source: `step-${idx}`,
             target: `step-${idx + 1}`,
+            type: "smoothstep",
             animated: idx < currentStepIndex,
             style: {
-                stroke: idx < currentStepIndex ? 'hsl(175 63% 38%)' : 'hsl(188 20% 80%)',
-                strokeWidth: idx < currentStepIndex ? 3 : 2,
+                stroke: idx < currentStepIndex ? '#00B7B5' : '#ddd',
+                strokeWidth: idx < currentStepIndex ? 4 : 2,
             },
             markerEnd: {
                 type: MarkerType.ArrowClosed,
-                color: idx < currentStepIndex ? 'hsl(175 63% 38%)' : 'hsl(188 20% 80%)',
+                color: idx < currentStepIndex ? '#00B7B5' : '#ddd',
             },
         }));
 
@@ -59,18 +62,18 @@ export function FlowChart({ flow, currentStepIndex = -1 }) {
     if (!flow) return null;
 
     return (
-        <div className="h-[400px] w-full border rounded-lg bg-gradient-to-br from-gray-50 to-white overflow-hidden">
+        <div className="h-[600px] w-full border-2 border-[#00B7B5] rounded-xl bg-gradient-to-br from-gray-50 to-white overflow-hidden shadow-lg">
             <ReactFlow
                 nodes={nodes}
                 edges={edges}
                 onNodesChange={onNodesChange}
                 onEdgesChange={onEdgesChange}
                 fitView
-                minZoom={0.5}
-                maxZoom={1.5}
+                minZoom={0.4}
+                maxZoom={1.2}
                 attributionPosition="bottom-right"
             >
-                <Background color="#e5e7eb" gap={16} size={1} />
+                <Background color="#e5e7eb" gap={20} size={1} />
                 <Controls showInteractive={false} />
             </ReactFlow>
         </div>
